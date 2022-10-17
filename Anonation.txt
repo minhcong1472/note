@@ -1,3 +1,13 @@
+Java Spring Boot (Spring Boot) là một công cụ giúp phát triển ứng dụng web và microservices bằng Spring Framework nhanh hơn và dễ dàng hơn.
+Spring Boot là một extension của Spring Framework giúp các lập trình viên loại bỏ các bước cấu hình phức tạp mà Spring bắt buộc. 
+Spring Boot là dự án phát triển bởi ngôn ngữ Java (JAV) trong hệ sinh thái Spring framework.
+https://itnavi.com.vn/blog/spring-boot-la-gi
+
+JVM (Java Virtual Machine) là 1 máy ảo java - nó được dùng để thực thi các chương trình Java hay hiểu nôm na là trình thông dịch của Java.
+
+Microservices là một phương pháp đặc biệt được ứng dụng trong phát triển hệ thống phần mềm. 
+Phương pháp này sẽ cố gắng tập trung vào việc xây dựng các mô-đun đơn chức năng với các giao diện và hoạt động được xác định rõ ràng.
+
 - @Component annotation : trên toàn bộ ứng dụng để đánh dấu một class được tạo ra với mục đích là để định nghĩa các bean được quản lý bởi Spring IoC container.
 Spring chỉ tìm kiếm và chọn ra những class được đánh dấu với @Component annotaion để khởi tạo và đăng ký với ApplicationContext.
 Spring sẽ không tìm kiếm các class được đánh dấu là @Service và @Repository, tuy nhiên chúng vẫn sẽ được đăng ký với ApplicationContext bởi chính bản thân chúng đã được đánh dấu với @Component annotation.
@@ -11,6 +21,28 @@ có một vai trò đặc biệt dùng để chuyển đổi các database excep
 Khi Spring nó sẽ tìm kiếm bean có tên là BookDao trong container của nó ,sau đó nhúng (hoặc tiêm) vào lớp BookServiceImple. Đây chính là cơ chế DI (dependency injection). 
 Khi Spring bắt đầu chạy nó sẽ quét qua các lớp có sử dụng annotation để tạo bean đồng thời nó cũng quét bên trong các bean xem có khai báo @Autowire không nếu có nó sẽ tìm kiếm bean tương ứng mà nó quản lý và nhúng vào.
 
+- @PathVariable được sử dụng để xử lý những URI động, có một hoặc nhiều parameter trên URI.
+
+- @Valid Dùng để kiểm tra dữ liệu có đúng như mình mong muốn hay không. 
+Ví dụ:  mong muốn name là không được rỗng , author không được rỗng. Nếu dữ liệu bị rỗng thì @Validate sẽ bắt lỗi.
+
+- @RequestMapping
+Có nhiệm vụ ánh xạ các request (yêu cầu) người dùng vào method tương ứng trong controller. 
+Ví dụ : Khi ta nhập vào url là http://localhost:8080/student thì nó sẽ được xử lý bởi phương thức là public String getAllStudent().
+Ví dụ : Khi ta nhập vào url là http://localhost:8080/teacher thì nó sẽ được xử lý bởi phương thức là public String getAllTeacher()
+
+- @SessionAttribute để lưu trữ các giá trị trong một phiên làm việc. Giống như mình làm một ứng dụng shopping cart . Khi người dùng chọn 1 sản phẩm thì mình dùng session mình lưu lại. 
+Khi khách hàng thanh toán giỏ hàng thì mình lấy hết tất cả các mặt hàng chứa trong session ra và tính toán
+
+- @ResponseBody để nói cho controller biết rằng ta sẽ trả về một đối tượng Object kiểu Json cho client chứ mình không render ra một trang view
+
+- @RequestBody được sử dụng để lấy các giá trị mà người dùng gửi lên server mà các giá trị đó được chứa trong phần thân (body) của request
+
+- @ModelAttribute :như một cầu nối giữa Controller và View. 
+Từ Controller chúng ta truyền các dữ liệu qua cho View thông qua ModelAttribute. 
+Từ View chúng ta sẽ sử dụng Thymeleaf để đọc các dữ liệu từ model và hiển thị ra cho người dùng.
+
+Tầng View chúng ta sử dụng model để lấy các giá trị từ người dùng và gắn vào thuộc tính modelAttribute.
 - @EqualsAndHashCode(callSuper=false) : @EqualsAndHashCode cho 1 class, Lombok sẽ generate equals() và hashCode() cho nó
 Lombok sử dụng các thuộc tính non-static và non-transient để generate equals() và hashCode() method.
 Khi bạn chú thích @EqualsAndHashCode cho 1 class, mặc định thuộc tính callSupper là false, đồng nghĩa với việc nó sẽ không gọi equals() và hashCode() ở supper class khi generate.
@@ -19,3 +51,9 @@ Khi bạn chú thích @EqualsAndHashCode cho 1 class, mặc định thuộc tín
 @JsonIdentityInfo được sử dụng để chỉ ra rằng danh tính đối tượng sẽ được sử dụng trong quá trình tuần tự hóa / hủy tuần tự hóa.
 - Serialization(tuần tự) trong Java là cơ chế chuyển đổi trạng thái của một đối tượng (giá trị các thuộc tính trong object) thành một chuỗi byte 
 sao cho chuỗi byte này có thể chuyển đổi ngược lại thành một đối tượng.
+
+- @Scope :Khi bean được tạo ra thì nó có nhiều scope khác nhau. 
+@Scope ở đây là phạm vi bean được sinh và và bị phá huỷ dưới sự quản lý của Spring Container. Khi bean được sinh ra nó có 5 scope (phạm vi được sử dụng)
+
+- @PropertySource và @Value
+Trong Spring chúng ta sử dụng @PropertySource để cho Spring biết tìm các file properties cấu hình cho hệ thống ở đâu đồng thời sử dụng @Value để lấy các giá trị trong file properties
