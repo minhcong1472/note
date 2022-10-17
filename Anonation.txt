@@ -1,0 +1,21 @@
+- @Component annotation : trên toàn bộ ứng dụng để đánh dấu một class được tạo ra với mục đích là để định nghĩa các bean được quản lý bởi Spring IoC container.
+Spring chỉ tìm kiếm và chọn ra những class được đánh dấu với @Component annotaion để khởi tạo và đăng ký với ApplicationContext.
+Spring sẽ không tìm kiếm các class được đánh dấu là @Service và @Repository, tuy nhiên chúng vẫn sẽ được đăng ký với ApplicationContext bởi chính bản thân chúng đã được đánh dấu với @Component annotation.
+
+- @Repository annotation  là để áp dụng trên các DAO(Data Access Object) class dùng để thao tác với database.
+có một vai trò đặc biệt dùng để chuyển đổi các database exception sang Spring-based (Các exception mà Spring có thể hiểu và xử lý được) unchecked exception.
+
+- @Service annotation để chỉ ra rằng nó thuộc về tầng service nắm giữ code xử lý business trong đó. Ngoài ra nố không có gì đặc biệt như @Repository.
+
+- @Autowire:tự động nhúng các bean được Spring Container sinh ra vào Class có khai báo @Autowire. 
+Khi Spring nó sẽ tìm kiếm bean có tên là BookDao trong container của nó ,sau đó nhúng (hoặc tiêm) vào lớp BookServiceImple. Đây chính là cơ chế DI (dependency injection). 
+Khi Spring bắt đầu chạy nó sẽ quét qua các lớp có sử dụng annotation để tạo bean đồng thời nó cũng quét bên trong các bean xem có khai báo @Autowire không nếu có nó sẽ tìm kiếm bean tương ứng mà nó quản lý và nhúng vào.
+
+- @EqualsAndHashCode(callSuper=false) : @EqualsAndHashCode cho 1 class, Lombok sẽ generate equals() và hashCode() cho nó
+Lombok sử dụng các thuộc tính non-static và non-transient để generate equals() và hashCode() method.
+Khi bạn chú thích @EqualsAndHashCode cho 1 class, mặc định thuộc tính callSupper là false, đồng nghĩa với việc nó sẽ không gọi equals() và hashCode() ở supper class khi generate.
+
+- @JsonIdentityInfo được sử dụng khi các đối tượng có mối quan hệ cha mẹ. 
+@JsonIdentityInfo được sử dụng để chỉ ra rằng danh tính đối tượng sẽ được sử dụng trong quá trình tuần tự hóa / hủy tuần tự hóa.
+- Serialization(tuần tự) trong Java là cơ chế chuyển đổi trạng thái của một đối tượng (giá trị các thuộc tính trong object) thành một chuỗi byte 
+sao cho chuỗi byte này có thể chuyển đổi ngược lại thành một đối tượng.
