@@ -1,14 +1,24 @@
-Java Spring Boot (Spring Boot) là một công cụ giúp phát triển ứng dụng web và microservices bằng Spring Framework nhanh hơn và dễ dàng hơn.
-Spring Boot là một extension của Spring Framework giúp các lập trình viên loại bỏ các bước cấu hình phức tạp mà Spring bắt buộc. 
-Spring Boot là dự án phát triển bởi ngôn ngữ Java (JAV) trong hệ sinh thái Spring framework.
+- Java Spring Boot (Spring Boot) là một công cụ giúp phát triển ứng dụng web và microservices bằng Spring Framework nhanh hơn và dễ dàng hơn.
+- Spring Boot là một extension của Spring Framework giúp các lập trình viên loại bỏ các bước cấu hình phức tạp mà Spring bắt buộc. 
+- Spring Boot là dự án phát triển bởi ngôn ngữ Java (JAV) trong hệ sinh thái Spring framework.
 https://itnavi.com.vn/blog/spring-boot-la-gi
 
-JVM (Java Virtual Machine) là 1 máy ảo java - nó được dùng để thực thi các chương trình Java hay hiểu nôm na là trình thông dịch của Java.
+- JVM (Java Virtual Machine) là 1 máy ảo java - nó được dùng để thực thi các chương trình Java hay hiểu nôm na là trình thông dịch của Java.
 
-Microservices là một phương pháp đặc biệt được ứng dụng trong phát triển hệ thống phần mềm. 
+- java.sql.Date về cơ bản thì nó kế thừa java.util.Date nhưng dùng để đại diện kiểu dữ liệu Date trong SQL. nó dùng để cụ thể khi thao tác với DateBase để xử lý dạng Date
+
+- 3 cách lưu file :
+Lưu trữ trực tiếp vào bộ nhớ của server và lưu tên file vào cơ sở dữ liệu
+Lưu trữ thẳng vào database dưới dạng binary 
+Lưu trữ trên các nền tảng đám mây, các server lưu trữ chuyên biệt như GoogleDrive, MinIO, AWS S3,… thông qua các API được cung cấp
+
+- @LOB là kiểu dữ liệu để lưu trữ dữ liệu đối tượng lớn. Có hai loại LOB: BLOB( dùng để lưu trữ dữ liệu nhị phân.) và CLOB(là để lưu trữ dữ liệu văn bản.)
+
+- Microservices là một phương pháp đặc biệt được ứng dụng trong phát triển hệ thống phần mềm. 
 Phương pháp này sẽ cố gắng tập trung vào việc xây dựng các mô-đun đơn chức năng với các giao diện và hoạt động được xác định rõ ràng.
 
 - @Component annotation : trên toàn bộ ứng dụng để đánh dấu một class được tạo ra với mục đích là để định nghĩa các bean được quản lý bởi Spring IoC container.
+- @Component là một Annotation (chú thích) đánh dấu trên các Class để giúp Spring biết nó là một Bean.
 Spring chỉ tìm kiếm và chọn ra những class được đánh dấu với @Component annotaion để khởi tạo và đăng ký với ApplicationContext.
 Spring sẽ không tìm kiếm các class được đánh dấu là @Service và @Repository, tuy nhiên chúng vẫn sẽ được đăng ký với ApplicationContext bởi chính bản thân chúng đã được đánh dấu với @Component annotation.
 
@@ -36,6 +46,10 @@ Khi khách hàng thanh toán giỏ hàng thì mình lấy hết tất cả các 
 
 - @ResponseBody để nói cho controller biết rằng ta sẽ trả về một đối tượng Object kiểu Json cho client chứ mình không render ra một trang view
 
+- @RestController chỉ đơn giản là kết hợp @Controller và @ResonseBody 
+
+- @Controller thường được sử dụng chung với @RequestMapping annotation để xử lý các request đến server.
+
 - @RequestBody được sử dụng để lấy các giá trị mà người dùng gửi lên server mà các giá trị đó được chứa trong phần thân (body) của request
 
 - @ModelAttribute :như một cầu nối giữa Controller và View. 
@@ -57,3 +71,8 @@ sao cho chuỗi byte này có thể chuyển đổi ngược lại thành một 
 
 - @PropertySource và @Value
 Trong Spring chúng ta sử dụng @PropertySource để cho Spring biết tìm các file properties cấu hình cho hệ thống ở đâu đồng thời sử dụng @Value để lấy các giá trị trong file properties
+
+- @RedirectAttributes được dùng để truyền các giá trị, tham số giữa các controller khi thực hiện redirect: (có thể dùng như truyền 1 message lỗi khi hoàn thành request của controller)
+
+-Model là gì : Chúng ta sử dụng Interface Model để truyền dữ liệu từ Controller sang View để hiển thị .
+ Spring cho phép chúng ta sử dụng Model như là một tham số trong method của Controller nên chúng ta dễ dàng lấy, chỉnh sửa dữ liệu để truyền qua cho View.
