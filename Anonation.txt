@@ -50,6 +50,8 @@ Khi khách hàng thanh toán giỏ hàng thì mình lấy hết tất cả các 
 
 - @Controller thường được sử dụng chung với @RequestMapping annotation để xử lý các request đến server.
 
+- @RequestParam để bắt các giá trị các tham số mà người dùng truyền vào trên URL theo định dạng key và value.
+
 - @RequestBody được sử dụng để lấy các giá trị mà người dùng gửi lên server mà các giá trị đó được chứa trong phần thân (body) của request
 
 - @ModelAttribute :như một cầu nối giữa Controller và View. 
